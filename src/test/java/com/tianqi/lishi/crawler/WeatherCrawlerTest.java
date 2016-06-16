@@ -1,6 +1,6 @@
 package com.tianqi.lishi.crawler;
 
-import com.tianqi.lishi.Service.WeatherService;
+import com.tianqi.lishi.service.WeatherService;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
