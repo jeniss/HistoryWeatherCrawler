@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class DateHtmlParse extends HtmlParse {
     protected List<DateInfo> dateInfoList = new ArrayList<DateInfo>();
+    private String className = "tqtongji1";
 
     public List<DateInfo> getDateInfoList() {
         return dateInfoList;
@@ -25,25 +26,12 @@ public class DateHtmlParse extends HtmlParse {
         this.url = url;
     }
 
-    public void parse() {
-        try {
-            Document document = Jsoup.connect(url).get();
-            Elements dateListElements = document.body().select("div[id=tool_site] > div[class=tqtongji1] li a");
-            Iterator iterator = dateListElements.iterator();
-            while (iterator.hasNext()) {
-                Element element = (Element) iterator.next();
-
-                DateInfo dateInfo = new DateInfo();
-                dateInfo.setDayDate(element.text().replace("天气", ""));
-                dateInfo.setUrl(element.attr("href"));
-                dateInfoList.add(dateInfo);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public DateHtmlParse(String url, String className) {
+        this.url = url;
+        this.className = className;
     }
 
-    public void parse(String className) {
+    public void parse() {
         try {
             Document document = Jsoup.connect(url).get();
             Elements dateListElements = document.body().select("div[id=tool_site] > div[class=" + className + "] li a");

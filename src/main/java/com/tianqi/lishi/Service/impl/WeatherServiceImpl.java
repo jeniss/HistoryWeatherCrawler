@@ -1,43 +1,53 @@
-package com.tianqi.lishi.crawler;
+package com.tianqi.lishi.Service.impl;
 
-import com.tianqi.lishi.db.MySQLManager;
+import com.tianqi.lishi.Service.WeatherService;
+import com.tianqi.lishi.crawler.DateHtmlParse;
+import com.tianqi.lishi.crawler.DayWeatherHtmlParse;
+import com.tianqi.lishi.dao.WeatherDao;
 import com.tianqi.lishi.model.DateInfo;
 import com.tianqi.lishi.model.WeatherInfo;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Created by jennifert on 2016/6/15.
+ * Created by jennifert on 2016/6/16.
  */
-public class WeatherCrawler {
-    private String url;
+@Service
+@Transactional
+public class WeatherServiceImpl implements WeatherService {
+    private Logger logger = Logger.getLogger(WeatherServiceImpl.class);
 
-    public WeatherCrawler(String url) {
-        this.url = url;
-    }
+    @Autowired
+    private WeatherDao weatherMapper;
 
-    public void crawlerDataToDB() {
+    @Override
+    public void crawlerDataToDB(String url, Date begin, Date end) {
         //parse month of year html
         DateHtmlParse monthDateHtmlParse = new DateHtmlParse(url);
         monthDateHtmlParse.parse();
         List<DateInfo> monthDateInfoList = monthDateHtmlParse.getDateInfoList();
 
         //print month date
-        System.out.println("--------month------");
+        logger.info("--------months------");
         for (DateInfo dateInfo : monthDateInfoList) {
-            System.out.println(dateInfo.getDayDate() + ": " + dateInfo.getUrl());
+            logger.info(dateInfo.getDayDate() + ": " + dateInfo.getUrl());
         }
 
         //parse day of month html and to DB
         for (DateInfo dateInfo : monthDateInfoList) {
             //parse day of month html
             String dayUrl = dateInfo.getUrl();
-            DateHtmlParse dayHtmlParse = new DateHtmlParse(dayUrl);
-            dayHtmlParse.parse("tqtongji2");
+            DateHtmlParse dayHtmlParse = new DateHtmlParse(dayUrl, "tqtongji2");
+            dayHtmlParse.parse();
             List<DateInfo> dayDateInfoList = dayHtmlParse.getDateInfoList();
 
             List<WeatherInfo> weatherInfos = new ArrayList<WeatherInfo>();
@@ -59,8 +69,9 @@ public class WeatherCrawler {
             }
 
             //save to DB
-            MySQLManager.getInstance().getConnection();
-            MySQLManager.getInstance().insertBatch(weatherInfos);
+            weatherMapper.insertWeatherInfosBatch(weatherInfos);
+
+            break;
         }
     }
 }

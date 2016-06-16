@@ -7,6 +7,7 @@ import java.util.List;
  * Created by jennifert on 2016/6/15.
  */
 public class WeatherInfo {
+    private String city;
     private Date date;
     private String highestTemp;
     private String lowestTemp;
@@ -16,6 +17,32 @@ public class WeatherInfo {
     private DayInfo dayInfo;
     private NightInfo nightInfo;
     private List<LifeTips> lifeTipsList;
+    private Date publishDate;
+    private Date servertime;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public Date getServertime() {
+        return servertime;
+    }
+
+    public void setServertime(Date servertime) {
+        this.servertime = servertime;
+    }
 
     public Date getDate() {
         return date;
