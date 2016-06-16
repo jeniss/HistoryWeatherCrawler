@@ -1,14 +1,14 @@
-package com.tianqi.lishi.Service.impl;
+package com.tianqi.lishi.service.impl;
 
-import com.tianqi.lishi.Service.WeatherService;
 import com.tianqi.lishi.crawler.DateHtmlParse;
 import com.tianqi.lishi.crawler.DayWeatherHtmlParse;
 import com.tianqi.lishi.dao.WeatherDao;
 import com.tianqi.lishi.model.DateInfo;
 import com.tianqi.lishi.model.WeatherInfo;
+import com.tianqi.lishi.service.WeatherService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DateFormat;
@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by jennifert on 2016/6/16.
  */
-@Service
+@Component
 @Transactional
 public class WeatherServiceImpl implements WeatherService {
     private Logger logger = Logger.getLogger(WeatherServiceImpl.class);

@@ -1,4 +1,4 @@
-package com.tianqi.lishi.Service;
+package com.tianqi.lishi.service;
 
 import java.util.Date;
 
