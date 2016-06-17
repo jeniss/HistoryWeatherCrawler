@@ -9,8 +9,8 @@ import java.util.List;
 public class WeatherInfo {
     private String city;
     private Date date;
-    private String highestTemp;
-    private String lowestTemp;
+    private int highestTemp;
+    private int lowestTemp;
     private String desc;
     private String wind;
     private String weatherPic;
@@ -52,19 +52,19 @@ public class WeatherInfo {
         this.date = date;
     }
 
-    public String getHighestTemp() {
+    public int getHighestTemp() {
         return highestTemp;
     }
 
-    public void setHighestTemp(String highestTemp) {
+    public void setHighestTemp(int highestTemp) {
         this.highestTemp = highestTemp;
     }
 
-    public String getLowestTemp() {
+    public int getLowestTemp() {
         return lowestTemp;
     }
 
-    public void setLowestTemp(String lowestTemp) {
+    public void setLowestTemp(int lowestTemp) {
         this.lowestTemp = lowestTemp;
     }
 

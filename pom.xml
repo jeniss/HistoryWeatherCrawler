@@ -132,6 +132,35 @@
             <version>1.2.2</version>
         </dependency>
         <!-- mybatis end -->
-    </dependencies>
 
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <directory>D:\IdeaWorkspace\test\out\HistoryWeaherCrawler</directory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>bill</warName>
+                    <outputDirectory>D:\IdeaWorkspace\test\out\artifacts\HistoryWeaherCrawler</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>bill</finalName>
+    </build>
 </project>

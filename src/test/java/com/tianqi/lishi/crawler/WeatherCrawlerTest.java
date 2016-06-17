@@ -6,12 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Created by jennifert on 2016/6/16.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(JUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/applicationContext.xml"})
 public class WeatherCrawlerTest extends TestCase {
     @Autowired
@@ -19,6 +18,6 @@ public class WeatherCrawlerTest extends TestCase {
 
     @Test
     public void testCrawlerDataToDB() {
-        weatherService.crawlerDataToDB("http://lishi.tianqi.com/ansai/index.html", null, null);
+        weatherService.crawlerDataToDB("阿瓦提县", null, "2014-12-01", "2015-02-03");
     }
 }

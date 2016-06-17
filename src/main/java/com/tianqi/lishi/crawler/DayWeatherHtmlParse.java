@@ -34,8 +34,10 @@ public class DayWeatherHtmlParse extends HtmlParse {
             //get the highest/lowest temperature
             Elements tempElements = body.select(wStr + " li span font");
             Object[] tempElementArray = tempElements.toArray();
-            weatherInfo.setHighestTemp(((Element) tempElementArray[0]).text());
-            weatherInfo.setLowestTemp(((Element) tempElementArray[1]).text());
+            String highTempStr = ((Element) tempElementArray[0]).text();
+            String lowTempStr = ((Element) tempElementArray[1]).text();
+            weatherInfo.setHighestTemp(Integer.valueOf(highTempStr.substring(0, highTempStr.length() - 1)));
+            weatherInfo.setLowestTemp(Integer.valueOf(lowTempStr.substring(0, lowTempStr.length() - 1)));
 
             //get desc
             Element descElement = body.select(wStr + " li[class=cDRed]").iterator().next();
