@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by jennifert on 2016/6/15.
  */
-public class DateHtmlParse extends HtmlParse {
+public class DateHtmlParse {
     protected List<DateInfo> dateInfoList = new ArrayList<DateInfo>();
     private String className = "tqtongji1";
 
@@ -27,6 +27,8 @@ public class DateHtmlParse extends HtmlParse {
     private Date endDate;
 
     private String dateFormatStr;
+
+    private String url;
 
     public void setDateFormatStr(String dateFormatStr) {
         this.dateFormatStr = dateFormatStr;

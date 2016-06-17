@@ -11,9 +11,10 @@ import java.util.Iterator;
 /**
  * Created by jennifert on 2016/6/17.
  */
-public class CityHtmlParse extends HtmlParse {
+public class CityHtmlParse {
     private final static String CITIES_URL = "http://lishi.tianqi.com";
     private String cityName;
+    private String url;
 
     public CityHtmlParse(String cityName) {
         this.cityName = cityName;
@@ -23,7 +24,6 @@ public class CityHtmlParse extends HtmlParse {
         return this.url;
     }
 
-    @Override
     public void parse() {
         Document document = null;
         try {

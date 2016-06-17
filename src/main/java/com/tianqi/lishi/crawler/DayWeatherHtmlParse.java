@@ -13,8 +13,9 @@ import java.io.IOException;
 /**
  * Created by jennifert on 2016/6/15.
  */
-public class DayWeatherHtmlParse extends HtmlParse {
+public class DayWeatherHtmlParse {
     protected WeatherInfo weatherInfo = new WeatherInfo();
+    private String url;
 
     public WeatherInfo getWeatherInfo() {
         return weatherInfo;
