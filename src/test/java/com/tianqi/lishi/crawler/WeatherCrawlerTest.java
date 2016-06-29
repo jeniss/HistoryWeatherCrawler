@@ -20,4 +20,9 @@ public class WeatherCrawlerTest extends TestCase {
     public void testCrawlerDataToDB() {
         weatherService.crawlerDataToDB("阿瓦提县", null, "2014-12-01", "2015-02-03");
     }
+
+    @Test
+    public void testCrawlerToDBFromHouBao() {
+        weatherService.crawlerToDBFromHouBao("山西", "太原", null, "2014-12-01", "2015-02-03");
+    }
 }
