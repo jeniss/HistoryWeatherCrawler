@@ -8,6 +8,7 @@ import org.jsoup.select.Elements;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Iterator;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Iterator;
 public class BaoCityHtmlParse {
     private Logger logger = Logger.getLogger(BaoCityHtmlParse.class);
     public final static String WEB_URL = "http://tianqihoubao.com";
-    private final static String CITY_URL = "http://tianqihoubao.com/lishi/bj.htm";
+    private final static String CITY_URL = "http://www.tianqihoubao.com/lishi/";
 
     private String province;
     private String city;
@@ -35,8 +36,8 @@ public class BaoCityHtmlParse {
         Document document = null;
         try {
             //获取省 / 直辖市 / 自治区的url
-            document = Jsoup.connect(CITY_URL).get();
-            Elements provinceElements = document.select("div[class=box p] ul li a");
+            document = Jsoup.parse(new URL(CITY_URL).openStream(), "GBK", CITY_URL);
+            Elements provinceElements = document.select("div[class=citychk] dl dt a");
             Iterator provinceIterator = provinceElements.iterator();
             String provinceUrl = this.getUrlResult(provinceIterator, province);
 

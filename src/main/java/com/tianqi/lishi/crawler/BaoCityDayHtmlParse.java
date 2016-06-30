@@ -91,15 +91,15 @@ public class BaoCityDayHtmlParse {
                 String[] temperatures = tdElements.get(2).text().split("/");
                 String highTempStr = temperatures[0].trim();
                 String lowTempStr = temperatures[1].trim();
-                String lowTemp = lowTempStr.substring(0, lowTempStr.length() - 1);
-                String highTemp = highTempStr.substring(0, highTempStr.length() - 1);
+                String lowTemp = StringUtils.isEmpty(lowTempStr) ? null : lowTempStr.substring(0, lowTempStr.length() - 1);
+                String highTemp = StringUtils.isEmpty(highTempStr) ? null : highTempStr.substring(0, highTempStr.length() - 1);
                 WeatherInfo weatherInfo = new WeatherInfo();
                 weatherInfo.setServertime(new Date());
                 weatherInfo.setPublishDate(new Date());
                 weatherInfo.setDate(curDay);
                 weatherInfo.setDesc(desc);
-                weatherInfo.setHighestTemp(Integer.parseInt(highTemp));
-                weatherInfo.setLowestTemp(Integer.parseInt(lowTemp));
+                weatherInfo.setHighestTemp(highTemp == null ? null : Integer.parseInt(highTemp));
+                weatherInfo.setLowestTemp(lowTemp == null ? null : Integer.parseInt(lowTemp));
                 if (StringUtils.isEmpty(cityAlias)) {
                     weatherInfo.setCity(cityName);
                 } else {

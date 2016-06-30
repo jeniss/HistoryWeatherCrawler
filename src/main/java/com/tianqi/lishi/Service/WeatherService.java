@@ -5,4 +5,6 @@ package com.tianqi.lishi.service;
  */
 public interface WeatherService {
     void crawlerDataToDB(String cityName, String cityNameAlias, String beginDate, String endDate);
+
+    boolean crawlerToDBFromHouBao(String province, String cityName, String cityNameAlias, String beginDateStr, String endDateStr);
 }
